@@ -34,27 +34,24 @@
                 <th>Item</th>
                 <th>Date</th>
                 <th>Complete</th>
+                <th>Delete</th>
               </tr>
             </thead>
             <tbody>
               <tr ng-repeat="item in items">
                 <td>{{ item.text }}</td>
                 <td>{{ item.dueDate | date }}</td>
-                <td>{{ item.completed }}</td>
+                <td><input type="checkbox" name="completed" value=false ng-model="item.completed"></td>
+                <td><a ng-href="#" ng-click="deleteItem(item)">X</a></td>
               </tr>
             </tbody>
-          </table>    
+          </table>
+          <button class="btn btn-sm btn-primary" ng-click="removeCompleted()">Clear Completed</button>
         </div>
       </div>
     </div>
   </div>
 <body>
-  <script type="text/javascript">
-    $(function () {
-      $('#datetimepicker1').datetimepicker();
-    });
-  </script>
-  
   <!-- angular app -->
   <script src = "js/app.js"></script>
   <!-- controllers -->

@@ -11,5 +11,18 @@ toDo.controller('TodoCtrl', ['$scope', '$window' , function($scope, $window){
       form.$setUntouched();
     }
   }
-}]
-);
+  
+  $scope.deleteItem = function(item) {
+    var index = $scope.items.indexOf(item);
+    $scope.items.splice(index, 1);
+  }
+  
+  $scope.removeCompleted = function() {
+    index = $scope.items.length - 1
+    while (index >= 0) {
+      if( $scope.items[index].completed === true)
+        $scope.deleteItem($scope.items[index]);
+      index -= 1;
+    }
+  }
+}]);
