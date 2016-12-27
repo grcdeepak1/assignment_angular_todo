@@ -2,7 +2,7 @@ toDo.controller('TodoCtrl', ['$scope', '$window' , function($scope, $window){
   $scope.items = [{ text: "Get groceries from the store", dueDate: new Date(), completed: false },
                   { text: "Make dinner", dueDate: new Date(), completed: false},
                   { text: "Eat dinner", dueDate: new Date(), completed: false}];
-
+  $scope.activateCompletedFilter = false;
   $scope.createTodo = function(valid, form) {
     if (valid) {
       $scope.items.push({text: $scope.todoParams.text, dueDate: $scope.todoParams.duedate, completed: false});
@@ -24,5 +24,8 @@ toDo.controller('TodoCtrl', ['$scope', '$window' , function($scope, $window){
         $scope.deleteItem($scope.items[index]);
       index -= 1;
     }
+  }
+  $scope.toggleCompletedFilter = function() {
+    $scope.activateCompletedFilter = $scope.activateCompletedFilter ? false : true;
   }
 }]);
