@@ -28,7 +28,8 @@
           </form>
         </div>
         <div class="col-md-6">
-          <button class="btn btn-sm btn-normal" ng-click="toggleCompletedFilter()">{{ activateCompletedFilter == true ? "Hide Completed" : "Show Completed" }}</button>
+          <button class="btn btn-sm btn-normal" ng-click="toggleCompletedFilter()" ng-show="!isCompletedFilterActive()">Hide Completed</button>
+          <button class="btn btn-sm btn-normal" ng-click="toggleCompletedFilter()" ng-show="isCompletedFilterActive()">Show Completed</button>
           <table class="table table-striped">
             <thead>
               <tr>
@@ -39,7 +40,7 @@
               </tr>
             </thead>
             <tbody>
-              <tr todo-item ng-repeat="item in items | completedFilter : activateCompletedFilter" item="item" delete-item="deleteItem(item)">
+              <tr todo-item ng-repeat="item in items | completedFilter : isCompletedFilterActive()" item="item" delete-item="deleteItem(item)">
               </tr>
             </tbody>
           </table>
@@ -51,6 +52,8 @@
 <body>
   <!-- angular app -->
   <script src = "js/app.js"></script>
+  <!-- services -->
+  <script src = "js/services/todoService.js"></script>
   <!-- controllers -->
   <script src = "js/controllers/TodoCtrl.js"></script>
   <!-- directives -->
